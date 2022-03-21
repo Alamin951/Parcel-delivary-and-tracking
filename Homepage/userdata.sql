@@ -5,7 +5,7 @@ SET time_zone = "+00:00";
 
 
 
-CREATE TABLE `usertable` (
+CREATE TABLE `userinfo` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -19,11 +19,11 @@ CREATE TABLE `usertable` (
 
 
 
-ALTER TABLE `usertable`
+ALTER TABLE `userinfo`
   ADD PRIMARY KEY (`id`);
 
 
-ALTER TABLE `usertable`
+ALTER TABLE `userinfo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
