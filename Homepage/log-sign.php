@@ -535,9 +535,16 @@
                             </div>
                         </div>
 
+
+                        <!-- <?php if (isset($_GET['error'])) : ?>
+                            <p><?php echo $_GET['error']; ?></p>
+                        <?php endif ?> -->
+
+
                         <div class="col_half">
                             <div class="input-field">
                                 <i class="fas fa-mars"></i>
+                                <!-- <input type="file" name="my_image" id="my-image"> -->
                                 <input type="text" placeholder="Male/Female" name="gender" required  />
                             </div>
 
