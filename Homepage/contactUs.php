@@ -115,5 +115,7 @@
         <button type="submit" href="/">Submit</button>
       </form>
     </div>
+    <?php include 'footer.html'; ?>
+
   </body>
 </html>

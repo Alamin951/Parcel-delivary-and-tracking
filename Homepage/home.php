@@ -48,7 +48,7 @@ if($email != false && $password != false){
 				<li><a href="#about">About Us</a></li>
 				<li><a href="#service">Services</a></li>
 				<li><a href="profile.php">Profile</a></li>
-				<li><a href="#contact">Contact</a></li>
+				<li><a href="contactUs.php">Contact</a></li>
                 <li><a class="navbar-brand" href="#">PDT</a>
     <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
 			</ul>
