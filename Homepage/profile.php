@@ -34,6 +34,7 @@ if($email != false && $password != false){
 </head>
 
 <body>
+    
     <header>
         <div class="user">
             <img src="images/profile.png" alt="">
@@ -43,7 +44,7 @@ if($email != false && $password != false){
 
     <nav class="navbar">
         <ul>
-            <li><a href="#">home</a></li>
+            <li><a href="home.php">home</a></li>
             <li><a href="#">Edit profile</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#details">Details</a></li>

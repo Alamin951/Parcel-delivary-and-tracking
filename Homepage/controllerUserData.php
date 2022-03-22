@@ -97,7 +97,7 @@ if (isset($_POST['login'])) {
             if ($status == 'verified') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
-                header('location: profile.php');
+                header('location: home.php');
             } else {
                 $info = "It's look like you haven't still verify your email - $email";
                 $_SESSION['info'] = $info;
@@ -189,3 +189,38 @@ if (isset($_POST['change-password'])) {
 if (isset($_POST['login-now'])) {
     header('Location: log-sign.php');
 }
+
+// if(isset($_POST['order-now'])){
+//     $name = mysqli_real_escape_string($con, $_POST['name']);    
+//     $email = mysqli_real_escape_string($con, $_POST['email']);
+//     $relation = mysqli_real_escape_string($con, $_POST['relation']);
+//     $r_email = mysqli_real_escape_string($con, $_POST['r_email']);
+//     $phone = mysqli_real_escape_string($con, $_POST['phone']);
+//     $another_phone = mysqli_real_escape_string($con, $_POST['another_phone']);
+//     $street = mysqli_real_escape_string($con, $_POST['street']);
+//     $area = mysqli_real_escape_string($con, $_POST['area']);    
+//     $thana = mysqli_real_escape_string($con, $_POST['thana']);
+//     $city = mysqli_real_escape_string($con, $_POST['city']);
+//     $zipcode = mysqli_real_escape_string($con, $_POST['zipcode']);
+//     $type = mysqli_real_escape_string($con, $_POST['type']);
+//     $urgency = mysqli_real_escape_string($con, $_POST['urgency']);
+//     $breakable = mysqli_real_escape_string($con, $_POST['breakable']);
+
+//     $customer_id = $fetch_info['id'];
+
+
+//     $status = "0";
+//     $order_code = 'asdfg';
+//     $insert_data = "INSERT INTO order-form('name', 'email', 'relation', 'r_email', 'phone', 'another_phone', 'street', 'area', 'thana', 'city', 'zipcode', 'type', 'urgency', 'breakable', 'status', 'customer_id', 'order_code') 
+//                 VALUES ('$name','$email','$relation','$r_email','$phone','$another_phone','$street','$area','$thana','$city','$zipcode','$type','$urgency','$breakable','$status','$customer_id','$order_code')";
+//     $data_check = mysqli_query($con, $insert_data);
+
+//     if($data_check){
+//         echo 'data inserted';
+//         header('Location: profile.php');
+//     }
+//     else{
+//         echo 'error';
+//     }
+
+// }

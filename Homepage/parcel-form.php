@@ -1,7 +1,36 @@
+<!-- <?php require_once "controllerUserData.php"; ?> -->
+<?php require_once "controllerUserData.php"; ?>
+<?php 
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
+if($email != false && $password != false){
+    $sql = "SELECT * FROM userinfo WHERE email = '$email'";
+    $run_Sql = mysqli_query($con, $sql);
+    if($run_Sql){
+        $fetch_info = mysqli_fetch_assoc($run_Sql);
+        $status = $fetch_info['status'];
+        $code = $fetch_info['code'];
+        if($status == "verified"){
+            if($code != 0){
+                header('Location: reset-code.php');
+            }
+        }else{
+            header('Location: user-otp.php');
+        }
+    }
+}else{
+    header('Location: log-sign.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Parcel order</title>
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style1.css"> -->
+
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -120,8 +149,13 @@
     </style>
   </head>
   <body>
+    <?php
+      include 'navbar.html';
+    ?>
+
+
     <div class="main-block">
-    <form action="/">
+    <form action="#" method="POST">
       <h1>Prcel order</h1>
       <fieldset>
         <legend>
@@ -131,7 +165,7 @@
           <div><label>Name*</label><input type="text" name="name" required></div>
           <div><label>Email*</label><input type="email" name="email" required></div>
           <div><label>Relation</label><input type="text" name="relation"></div>
-          <div><label>Repeat email*</label><input type="email" name="email" required></div>
+          <div><label>Repeat email*</label><input type="email" name="r_email" required></div>
           <div><label>Phone*</label><input type="text" name="phone" required></div>
           <div><label>Another Phone</label><input type="text" name="another_phone" required></div>
           <div><label>Street*</label><input type="text" name="street" required></div>
@@ -150,7 +184,7 @@
            
             <div>
               <label>Parcel type*</label>  
-              <select required>
+              <select name="type" required>
                 <option disabled selected>Please choose</option>
                 <option value="Document">Document</option>
                 <option value="Money">Money</option>
@@ -164,7 +198,7 @@
           <div>
             <div>
               <label>Urgency*</label>              
-              <select >
+              <select name="urgency">
                 <option disabled selected> Please state the urgency</option>
                 <option value="Normal">Normal</option>
                 <option value="Urgent">Urgent</option>
@@ -173,7 +207,11 @@
             </div>
             <div>
               <label>Breakable?*</label>
-              <div class="children"><input type="checkbox" name="name" required></div>
+              <select name="breakable">
+                <option disabled selected> Please state the urgency</option>
+                <option value="1">yes</option>
+                <option value="0">No</option>
+              </select>
             </div>
           </div>
         </div>
@@ -190,8 +228,47 @@
             <input type="checkbox" name="checkbox"><span>I want to send this personallzed parcel by your site</span>
           </div>
       </fieldset>
-      <button type="submit" href="/">Submit</button>
+      <button type="submit" name="order-now">Submit</button>
     </form>
-    </div> 
+    </div>
+    <?php include 'footer.html'; ?> 
   </body>
 </html>
+
+<?php
+include 'connection.php';
+if(isset($_POST['order-now'])){
+    $name = mysqli_real_escape_string($con, $_POST['name']);    
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $relation = mysqli_real_escape_string($con, $_POST['relation']);
+    $r_email = mysqli_real_escape_string($con, $_POST['r_email']);
+    $phone = mysqli_real_escape_string($con, $_POST['phone']);
+    $another_phone = mysqli_real_escape_string($con, $_POST['another_phone']);
+    $street = mysqli_real_escape_string($con, $_POST['street']);
+    $area = mysqli_real_escape_string($con, $_POST['area']);    
+    $thana = mysqli_real_escape_string($con, $_POST['thana']);
+    $city = mysqli_real_escape_string($con, $_POST['city']);
+    $zipcode = mysqli_real_escape_string($con, $_POST['zipcode']);
+    $type = mysqli_real_escape_string($con, $_POST['type']);
+    $urgency = mysqli_real_escape_string($con, $_POST['urgency']);
+    $breakable = mysqli_real_escape_string($con, $_POST['breakable']);
+
+    $customer_id = $fetch_info['id'];
+
+
+    $status = "0";
+    $order_code = 'asdfg';
+    $insert_data = "INSERT INTO order-form
+                VALUES ('$name','$email','$relation','$r_email','$phone','$another_phone','$street','$area','$thana','$city','$zipcode','$type','$urgency','$breakable','$status','$customer_id','$order_code')";
+    $data_check = mysqli_query($con, $insert_data);
+
+    if($data_check){
+        echo 'data inserted';
+        header('Location: profile.php');
+    }
+    else{
+        echo 'error';
+    }
+
+}
+?>

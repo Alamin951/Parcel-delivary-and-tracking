@@ -1,4 +1,27 @@
 
+<?php require_once "controllerUserData.php"; ?>
+<?php 
+$email = $_SESSION['email'];
+$password = $_SESSION['password'];
+if($email != false && $password != false){
+    $sql = "SELECT * FROM userinfo WHERE email = '$email'";
+    $run_Sql = mysqli_query($con, $sql);
+    if($run_Sql){
+        $fetch_info = mysqli_fetch_assoc($run_Sql);
+        $status = $fetch_info['status'];
+        $code = $fetch_info['code'];
+        if($status == "verified"){
+            if($code != 0){
+                header('Location: reset-code.php');
+            }
+        }else{
+            header('Location: user-otp.php');
+        }
+    }
+}else{
+    header('Location: log-sign.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +34,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="css/footer.css">
 
 
 </head>
 <body>
     
-    <h1>Welcome <?php echo $fetch_info['name'] ?></h1>
     <div class="hero">
 		<nav>
 			<h2 class="logo"> My<span>Parcel</span></h2>
@@ -24,7 +47,7 @@
 				<li><a href="#">Home</a></li>
 				<li><a href="#about">About Us</a></li>
 				<li><a href="#service">Services</a></li>
-				<li><a href="profile.html">Profile</a></li>
+				<li><a href="profile.php">Profile</a></li>
 				<li><a href="#contact">Contact</a></li>
                 <li><a class="navbar-brand" href="#">PDT</a>
     <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
@@ -33,7 +56,7 @@
 		</nav>
 
 		<div class="content" id="Service">
-			<h4>Welcome, to our</h4>
+			<h4>Welcome,<span><?php echo $fetch_info['name']; ?></span> to our</h4>
 			<h1>Parcel delivery <span> & Tracking</span></h1>
 			<h3>your reliable parcel service.</h3>
 			<div class="newslatter">
@@ -102,6 +125,7 @@
 			
 		</div>
 	</div>
+	<?php include 'footer.html'; ?>
     
 </body>
 </html>
