@@ -26,7 +26,7 @@ if($email != false && $password != false){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title><?php echo $fetch_info['name'] ?> | Profile</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="css/profile.css">
@@ -46,7 +46,6 @@ if($email != false && $password != false){
         <ul>
             <li><a href="home.php">home</a></li>
             <li><a href="#">Edit profile</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#details">Details</a></li>
             <li><a href="#contact">Employes</a></li>
             <li><a href="logout-user.php">Log out</a></li>

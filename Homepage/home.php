@@ -28,13 +28,13 @@ if($email != false && $password != false){
     <meta charset="UTF-8">
     <title><?php echo $fetch_info['name'] ?> | Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="css/footer.css">
+  
 
 
 </head>
@@ -46,11 +46,10 @@ if($email != false && $password != false){
 			<ul>
 				<li><a href="#">Home</a></li>
 				<li><a href="#about">About Us</a></li>
-				<li><a href="#service">Services</a></li>
+				<li><a href="parcel-form.php">Place Parcel</a></li>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="contactUs.php">Contact</a></li>
-                <li><a class="navbar-brand" href="#">PDT</a>
-    <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
+                <li><button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
 			</ul>
 			
 		</nav>
@@ -75,7 +74,7 @@ if($email != false && $password != false){
 			<div class="about-text">
 				<h2>About <span>Us</span></h2>
 				<p>We probide the best parcel delivery servises around the country. we have truustworthy reputation for being punctual and Active. Try to solve any issues instantly.</p>
-				<button type="button">Welcome</button>
+				<button type="button"> <a class="button" href="#"> Welcome</a></button>
 			</div>
 		</div>
 	</section>
@@ -125,6 +124,8 @@ if($email != false && $password != false){
 			
 		</div>
 	</div>
+
+	<!-- footer -->
 	<?php include 'footer.html'; ?>
     
 </body>

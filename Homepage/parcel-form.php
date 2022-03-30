@@ -28,7 +28,7 @@ if($email != false && $password != false){
   <head>
     <title>Parcel order</title>
     <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style1.css"> -->
+    
 
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
@@ -37,7 +37,16 @@ if($email != false && $password != false){
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, p { 
+      body, div, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      }
+      form { 
+        max-width: 60%;
       padding: 0;
       margin: 0;
       outline: none;
@@ -118,16 +127,22 @@ if($email != false && $password != false){
       .checkbox a:hover {
       color: #82b534;
       }
+      .checkbox span{
+        color: #8ebf42;
+      }
       button {
-      width: 100%;
+      width: 20%;
       padding: 10px 0;
       margin: 10px auto;
-      border-radius: 5px; 
+      border-radius: 10px; 
       border: none;
       background: #8ebf42; 
       font-size: 14px;
       font-weight: 600;
       color: #fff;
+      position: relative;
+      margin-left: 40%;
+      margin-right: 40%;
       }
       button:hover {
       background: #82b534;
@@ -222,7 +237,7 @@ if($email != false && $password != false){
         </legend>
         <div  class="terms-mailing">
           <div class="checkbox">
-            <input type="checkbox" name="checkbox"><span>I accept the <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for this website.</a></span>
+            <input type="checkbox" name="checkbox"><span>I accept the <a href="">Privacy Policy for this website.</a></span>
           </div>
           <div class="checkbox">
             <input type="checkbox" name="checkbox"><span>I want to send this personallzed parcel by your site</span>
