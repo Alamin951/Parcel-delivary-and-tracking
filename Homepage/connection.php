@@ -1,5 +1,5 @@
 <?php 
 
-$con = mysqli_connect('localhost', 'root', '', 'tabledata');
+$con = mysqli_connect('localhost', 'root', '', 'pdt');
 
 ?>

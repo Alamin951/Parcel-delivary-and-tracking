@@ -26,7 +26,7 @@ if($email != false && $password != false){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $fetch_info['name'] ?> | Home</title>
+    <title><?php echo $fetch_info['fullName'] ?> | Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -55,7 +55,7 @@ if($email != false && $password != false){
 		</nav>
 
 		<div class="content" id="Service">
-			<h4>Welcome,<span><?php echo $fetch_info['name']; ?></span> to our</h4>
+			<h4>Welcome,<span><?php echo $fetch_info['fullName']; ?></span> to our</h4>
 			<h1>Parcel delivery <span> & Tracking</span></h1>
 			<h3>your reliable parcel service.</h3>
 			<div class="newslatter">

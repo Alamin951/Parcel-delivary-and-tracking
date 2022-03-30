@@ -38,7 +38,7 @@ if($email != false && $password != false){
     <header>
         <div class="user">
             <img src="images/profile.png" alt="">
-            <h3 class="name"><?php echo $fetch_info['name']?> </h3>
+            <h3 class="name"><?php echo $fetch_info['fullName']?> </h3>
             <p class="post">Admin</p>
     </div>
 
@@ -64,13 +64,13 @@ if($email != false && $password != false){
 
     <div class="info">
         
-        <h3> <span> name : </span> <?php echo $fetch_info['name']?> </h3>
+        <h3> <span> name : </span> <?php echo $fetch_info['fullName']?> </h3>
         <h3> <span> age : </span> -- </h3>
         <h3> <span> Email : </span> <?php echo $fetch_info['email']?> </h3>
         <h3> <span> post : </span> Admin </h3>
         <h3> <span> Phone Number : </span> <?php echo $fetch_info['phone']?> </h3>
         <h3> <span> Address : </span> <?php echo $fetch_info['address']?></h3>
-        <h3> <span> Birthday : </span>  </h3>
+        <h3> <span> Birthday : </span><?php echo $fetch_info['birthdate']?>  </h3>
     </div>
 </div>
 

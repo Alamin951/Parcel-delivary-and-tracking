@@ -2,7 +2,7 @@
 session_start();
 require "connection.php";
 $email = "";
-$name = "";
+$fullName = "";
 $phone = "";
 $gender = "";
 $address = "";
@@ -10,43 +10,7 @@ $errors = array();
 
 
 if (isset($_POST['signup'])) {
-
-
-    // $img_name = $_FILES['my_image']['name'];
-	// $img_size = $_FILES['my_image']['size'];
-	// $tmp_name = $_FILES['my_image']['tmp_name'];
-	// $error = $_FILES['my_image']['error'];
-
-	// if ($error === 0) {
-	// 	if ($img_size > 1250000) {
-	// 		$em = "Sorry, your file is too large.";
-	// 	    header("Location: log-sign.php?error=$em");
-	// 	}else {
-	// 		$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-	// 		$img_ex_lc = strtolower($img_ex);
-
-	// 		$allowed_exs = array("jpg", "jpeg", "png"); 
-
-	// 		if (in_array($img_ex_lc, $allowed_exs)) {
-	// 			$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-	// 			$img_upload_path = 'uploads/'.$new_img_name;
-	// 			move_uploaded_file($tmp_name, $img_upload_path);
-
-	// 			// Insert into Database
-	// 			$sql = "INSERT INTO userinfo (image_url) 
-	// 			        VALUES('$new_img_name')";
-	// 			mysqli_query($conn, $sql);
-	// 			header("Location: profile.php");
-	// 		}else {
-	// 			$em = "You can't upload files of this type";
-	// 	        header("Location: log-sign.php?error=$em");
-	// 		}
-	// 	}
-	// }else {
-	// 	$em = "unknown error occurred!";
-	// 	header("Location: log-sign.php?error=$em");
-	// }
-    $name = mysqli_real_escape_string($con, $_POST['name']);    
+    $fullName = mysqli_real_escape_string($con, $_POST['fullName']);    
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $phone = mysqli_real_escape_string($con, $_POST['phone']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
@@ -66,8 +30,8 @@ if (isset($_POST['signup'])) {
         $encpass = password_hash($password, PASSWORD_BCRYPT);
         $code = rand(999999, 111111);
         $status = "not_verified";
-        $insert_data = "INSERT INTO userinfo (name, email, phone, gender, address,  password, code, status)
-                        values('$name', '$email', '$phone','$gender','$address', '$encpass', '$code', '$status')";
+        $insert_data = "INSERT INTO userinfo (fullName, email, phone, gender, address,  password, code, status)
+                        values('$fullName', '$email', '$phone','$gender','$address', '$encpass', '$code', '$status')";
         $data_check = mysqli_query($con, $insert_data);
         if ($data_check) {
             $subject = "Email Verification Code";
@@ -105,7 +69,7 @@ if (isset($_POST['check'])) {
         $update_otp = "UPDATE userinfo SET code = $code, status = '$status' WHERE code = $fetch_code";
         $update_res = mysqli_query($con, $update_otp);
         if ($update_res) {
-            $_SESSION['name'] = $name;
+            $_SESSION['fullName'] = $fullName;
             $_SESSION['email'] = $email;
             header('location: home.php');
             exit();
