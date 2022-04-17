@@ -27,7 +27,7 @@
 				<tbody>
 					<?php
 					$i = 1;
-					$qry = $conn->query("SELECT u.*,concat(u.firstname,' ',u.lastname) as name,concat(b.street,', ',b.city,', ',b.state,', ',b.zip_code,', ',b.country) as baddress FROM userinfo u inner join branches b on b.id = u.branch_id where u.type = 2 order by concat(u.firstname,' ',u.lastname) asc ");
+					$qry = $conn->query("SELECT u.*,concat(u.firstname,' ',u.lastname) as name,concat(b.street,', ',b.city,', ',b.state,', ',b.zip_code,', ',b.country) as baddress FROM users u inner join branches b on b.id = u.branch_id where u.type = 2 order by concat(u.firstname,' ',u.lastname) asc ");
 					while($row= $qry->fetch_assoc()):
 					?>
 					<tr>

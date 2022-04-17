@@ -1,8 +1,8 @@
-<?php include './connection.php' ?>
+<?php include 'connection.php' ?>
 <?php
 if(isset($_GET['id'])){
 	$type_arr = array('',"Admin","User");
-	$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM userinfo where id = ".$_GET['id'])->fetch_array();
+	$qry = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM users where id = ".$_GET['id'])->fetch_array();
 foreach($qry as $k => $v){
 	$$k = $v;
 }

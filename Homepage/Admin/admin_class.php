@@ -17,7 +17,7 @@ Class Action {
 
 	function login(){
 		extract($_POST);
-			$qry = $this->db->query("SELECT *,concat(firstname,' ',lastname) as name FROM userinfo where email = '".$email."' and password = '".md5($password)."'  ");
+			$qry = $this->db->query("SELECT *,concat(firstname,' ',lastname) as name FROM users where email = '".$email."' and password = '".md5($password)."'  ");
 		if($qry->num_rows > 0){
 			foreach ($qry->fetch_array() as $key => $value) {
 				if($key != 'password' && !is_numeric($key))
@@ -64,15 +64,15 @@ Class Action {
 					$data .= ", password=md5('$password') ";
 
 		}
-		$check = $this->db->query("SELECT * FROM userinfo where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM users where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;
 		}
 		if(empty($id)){
-			$save = $this->db->query("INSERT INTO userinfo set $data");
+			$save = $this->db->query("INSERT INTO users set $data");
 		}else{
-			$save = $this->db->query("UPDATE userinfo set $data where id = $id");
+			$save = $this->db->query("UPDATE users set $data where id = $id");
 		}
 
 		if($save){
@@ -98,7 +98,7 @@ Class Action {
 			}
 		}
 
-		$check = $this->db->query("SELECT * FROM userinfo where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM users where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;
@@ -110,10 +110,10 @@ Class Action {
 
 		}
 		if(empty($id)){
-			$save = $this->db->query("INSERT INTO userinfo set $data");
+			$save = $this->db->query("INSERT INTO users set $data");
 
 		}else{
-			$save = $this->db->query("UPDATE userinfo set $data where id = $id");
+			$save = $this->db->query("UPDATE users set $data where id = $id");
 		}
 
 		if($save){
@@ -148,15 +148,15 @@ Class Action {
 			$data .= ", avatar = '$fname' ";
 
 		}
-		$check = $this->db->query("SELECT * FROM userinfo where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
+		$check = $this->db->query("SELECT * FROM users where email ='$email' ".(!empty($id) ? " and id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;
 		}
 		if(empty($id)){
-			$save = $this->db->query("INSERT INTO userinfo set $data");
+			$save = $this->db->query("INSERT INTO users set $data");
 		}else{
-			$save = $this->db->query("UPDATE userinfo set $data where id = $id");
+			$save = $this->db->query("UPDATE users set $data where id = $id");
 		}
 
 		if($save){
@@ -171,7 +171,7 @@ Class Action {
 	}
 	function delete_user(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM userinfo where id = ".$id);
+		$delete = $this->db->query("DELETE FROM users where id = ".$id);
 		if($delete)
 			return 1;
 	}

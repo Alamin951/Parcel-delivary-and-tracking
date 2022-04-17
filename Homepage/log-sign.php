@@ -32,7 +32,7 @@
         position: relative;
         width: 100%;
         background-color: #fff;
-        min-height: 140vh;
+        min-height: 160vh;
         overflow: hidden;
     }
 
@@ -120,13 +120,14 @@
         border: none;
         line-height: 1;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: #333;
     }
 
     .input-field input::placeholder {
-        color: #aaa;
+        color: #333;
         font-weight: 500;
+        font-size: 0.8rem;
     }
 
     .social-text {
@@ -636,7 +637,7 @@
                                 <i class="fas fa-mars"></i>
                                 <!-- <input type="file" name="my_image" id="my-image"> -->
                                 <select name="gender" id="gender">
-                                    <option disabled selected>Select Gender</option>
+                                    <option disabled selected style="color: #aaa;" important!>Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
@@ -653,10 +654,10 @@
                         <input type="text" placeholder="Address" name="address" required <?php echo $address ?> />
                     </div>
 
-                    <div class="input-field" hidden>
+                    <!-- <div class="input-field" hidden>
                         <i class="fas fa-address-card"></i>
                         <input hidden type="text" placeholder="usertype" name="usertype" required value="3" />
-                    </div>
+                    </div> -->
 
                     <div class="row clearfix">
                         <div class="col_half">
@@ -668,7 +669,7 @@
                         <div class="col_half">
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Confirm Password" name="cpassword" required />
+                                <input type="password" placeholder="Re-type Password" name="cpassword" required />
                             </div>
                         </div>
                     </div>
