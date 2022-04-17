@@ -1,27 +1,5 @@
-<!-- <?php require_once "controllerUserData.php"; ?> -->
 <?php require_once "controllerUserData.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email != false && $password != false){
-    $sql = "SELECT * FROM userinfo WHERE email = '$email'";
-    $run_Sql = mysqli_query($con, $sql);
-    if($run_Sql){
-        $fetch_info = mysqli_fetch_assoc($run_Sql);
-        $status = $fetch_info['status'];
-        $code = $fetch_info['code'];
-        if($status == "verified"){
-            if($code != 0){
-                header('Location: reset-code.php');
-            }
-        }else{
-            header('Location: user-otp.php');
-        }
-    }
-}else{
-    header('Location: log-sign.php');
-}
-?>
+<?php require_once "fetch.php"; ?>
 
 <!DOCTYPE html>
 <html>
@@ -170,7 +148,7 @@ if($email != false && $password != false){
 
 
     <div class="main-block">
-    <form action="#" method="POST">
+    <form action="parcel-form.php" method="POST">
       <h1>Prcel order</h1>
       <fieldset>
         <legend>
@@ -243,7 +221,7 @@ if($email != false && $password != false){
             <input type="checkbox" name="checkbox"><span>I want to send this personallzed parcel by your site</span>
           </div>
       </fieldset>
-      <button type="submit" name="order-now">Submit</button>
+      <a href="p_payment.php"><button type="submit" name="order-now">Submit</button></a>
     </form>
     </div>
     <?php include 'footer.html'; ?> 
@@ -279,7 +257,7 @@ if(isset($_POST['order-now'])){
 
     if($data_check){
         echo 'data inserted';
-        header('Location: profile.php');
+        header('Location: p_payment.php');
     }
     else{
         echo 'error';

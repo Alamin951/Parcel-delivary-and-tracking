@@ -1,6 +1,7 @@
 <?php require_once "controllerUserData.php"; ?>
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -440,6 +441,82 @@
             left: 50%;
         }
     }
+
+
+    /* PDT anime */
+
+    #container {
+        color: white;
+        text-transform: uppercase;
+        font-size: 36px;
+        font-weight: bold;
+        width: 100%;
+        bottom: 70%;
+        display: block;
+    }
+
+    #flip {
+        height: 50px;
+        overflow: hidden;
+    }
+
+    #flip>div>div {
+        color: #fff;
+        padding: 4px 12px;
+        height: 45px;
+        margin-bottom: 45px;
+        display: inline-block;
+    }
+
+    #flip div:first-child {
+        animation: show 5s linear infinite;
+    }
+
+    #flip div div {
+        background: #42c58a;
+    }
+
+    #flip div:first-child div {
+        background: #4ec7f3;
+    }
+
+    #flip div:last-child div {
+        background: #DC143C;
+    }
+
+    @keyframes show {
+        0% {
+            margin-top: -270px;
+        }
+
+        5% {
+            margin-top: -180px;
+        }
+
+        33% {
+            margin-top: -180px;
+        }
+
+        38% {
+            margin-top: -90px;
+        }
+
+        66% {
+            margin-top: -90px;
+        }
+
+        71% {
+            margin-top: 0px;
+        }
+
+        99.99% {
+            margin-top: 0px;
+        }
+
+        100% {
+            margin-top: -270px;
+        }
+    }
 </style>
 
 <body>
@@ -484,7 +561,7 @@
                 </form>
 
 
-                <form action="log-sign.php" method="post" class="sign-up-form">
+                <form action="log-sign.php" method="post" class="sign-up-form" enctype="multipart/form-data">
                     <h2 class="title">Sign up</h2>
 
                     <?php
@@ -504,7 +581,9 @@
                             <?php
                             foreach ($errors as $showerror) {
                             ?>
-                                <li><?php echo $showerror; ?></li>
+                                <li>
+                                    <?php echo $showerror; ?>
+                                </li>
                             <?php
                             }
                             ?>
@@ -517,7 +596,7 @@
                         <div class="col_half">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Full Name" name="fullName"  required />
+                                <input type="text" placeholder="Full Name" name="fullName" required />
                             </div>
                         </div>
 
@@ -534,7 +613,8 @@
                         <div class="col_half">
                             <div class="input-field">
                                 <i class="fas fa-phone"></i>
-                                <input type="number" placeholder="Phone No" name="phone" required <?php echo $phone ?> />                            </div>
+                                <input type="number" placeholder="Phone No" name="phone" required <?php echo $phone ?> />
+                            </div>
                         </div>
                         <div class="col_half">
                             <div class="input-field">
@@ -547,13 +627,13 @@
                     <div class="row clearfix">
                         <div class="col_half">
                             <div class="input-field">
-                                <i class="fas fa-image"></i>
-                                <input type="file" name="image" id="image" accept="image/png, image/jpeg"/>
+                                <i class="fas fa-image" data-tippy="Add profile Photo"></i>
+                                <input type="file" name="image" id="image" accept="image/png, image/jpeg" />
                             </div>
                         </div>
                         <div class="col_half">
                             <div class="input-field">
-                                <i class="fas fa-mars" data-tippy="Add profile Photo"></i>
+                                <i class="fas fa-mars"></i>
                                 <!-- <input type="file" name="my_image" id="my-image"> -->
                                 <select name="gender" id="gender">
                                     <option disabled selected>Select Gender</option>
@@ -573,6 +653,11 @@
                         <input type="text" placeholder="Address" name="address" required <?php echo $address ?> />
                     </div>
 
+                    <div class="input-field" hidden>
+                        <i class="fas fa-address-card"></i>
+                        <input hidden type="text" placeholder="usertype" name="usertype" required value="3" />
+                    </div>
+
                     <div class="row clearfix">
                         <div class="col_half">
                             <div class="input-field">
@@ -589,7 +674,7 @@
                     </div>
 
                     <input type="submit" class="btn" name="signup" value="Signup" />
-                    <p class="social-text">Or Sign up with </p>
+                    <!-- <p class="social-text">Or Sign up with </p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -598,7 +683,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </form>
 
 
@@ -608,7 +693,22 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>New here ?</h3>
+                    <div id=container>
+                        Parcel
+                        <div id=flip>
+                            <div>
+                                <div>Tracking</div>
+                            </div>
+                            <div>
+                                <div>And</div>
+                            </div>
+                            <div>
+                                <div>Delivery</div>
+                            </div>
+                        </div>
+                        Management System
+                    </div>
+                    <h3 style="color: greenyellow;"><br>New here ?</h3>
                     <p>
                         Please register yourself in our system for enjoying wonderful services.
                     </p>
@@ -616,11 +716,26 @@
                         Sign up
                     </button>
                 </div>
-                <img src="img/log.svg" class="image" alt="" />
+                <img src="image/log.svg" class="image" alt="" />
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>Already have an account?</h3>
+                    <div id=container>
+                        Parcel
+                        <div id=flip>
+                            <div>
+                                <div>Tracking</div>
+                            </div>
+                            <div>
+                                <div>And</div>
+                            </div>
+                            <div>
+                                <div>Delivery</div>
+                            </div>
+                        </div>
+                        Management System
+                    </div>
+                    <h3 style="color: greenyellow;"><br>Already have an account?</h3>
                     <p>
                         Click here for log into our system and order your parcel for wonderful parcel delivery services.
                     </p>
@@ -628,13 +743,10 @@
                         Sign in
                     </button>
                 </div>
-                <img src="img/register.svg" class="image" alt="" />
+                <img src="image/register.svg" class="image" alt="" />
             </div>
         </div>
     </div>
-
-    <script src="app.js"></script>
-
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -645,6 +757,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
+    <script>
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+    </script>
 </body>
 
 </html>

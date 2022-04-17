@@ -1,27 +1,7 @@
 
 <?php require_once "controllerUserData.php"; ?>
-<?php 
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-if($email != false && $password != false){
-    $sql = "SELECT * FROM userinfo WHERE email = '$email'";
-    $run_Sql = mysqli_query($con, $sql);
-    if($run_Sql){
-        $fetch_info = mysqli_fetch_assoc($run_Sql);
-        $status = $fetch_info['status'];
-        $code = $fetch_info['code'];
-        if($status == "verified"){
-            if($code != 0){
-                header('Location: reset-code.php');
-            }
-        }else{
-            header('Location: user-otp.php');
-        }
-    }
-}else{
-    header('Location: log-sign.php');
-}
-?>
+<?php require_once "fetch.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +50,7 @@ if($email != false && $password != false){
 	
 	<section class="about" id="about">
 		<div class="main">
-			<img src="images/mainimg.jpg">
+			<img src="image/mainimg.jpg">
 			<div class="about-text">
 				<h2>About <span>Us</span></h2>
 				<p>We probide the best parcel delivery servises around the country. we have truustworthy reputation for being punctual and Active. Try to solve any issues instantly.</p>

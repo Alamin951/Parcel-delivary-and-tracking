@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-flow: column;
+    flex-flow: column; 
     padding-bottom: 60px;
 }
 
