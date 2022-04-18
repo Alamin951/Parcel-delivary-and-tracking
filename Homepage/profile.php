@@ -17,8 +17,8 @@
     <header>
         <div class="user">
             <img src="image/profile.png" alt="">
-            <h3 class="name"><?php echo $fetch_info['fullName']?> </h3>
-            <p class="post">Admin</p>
+            <h3 class="name"><?php echo $fetch_info['firstname']?> </h3>
+            <p class="post"></p>
     </div>
 
     <nav class="navbar">
@@ -43,13 +43,15 @@
 
     <div class="info">
         
-        <h3> <span> name : </span> <?php echo $fetch_info['fullName']?> </h3>
-        <h3> <span> age : </span> -- </h3>
+        <h3> <span> name : </span> <?php echo $fetch_info['firstname']?> </h3>
+        <!-- <h3> <span> age : </span> -- </h3> -->
         <h3> <span> Email : </span> <?php echo $fetch_info['email']?> </h3>
-        <h3> <span> post : </span> Admin </h3>
-        <h3> <span> Phone Number : </span> <?php echo $fetch_info['phone']?> </h3>
+        <!-- <h3> <span> post : </span> Admin </h3> -->
+        <h3> <span> Phone Number : </span>0<?php echo $fetch_info['phone']?> </h3>
         <h3> <span> Address : </span> <?php echo $fetch_info['address']?></h3>
         <h3> <span> Birthday : </span><?php echo $fetch_info['birthdate']?>  </h3>
+        <h3> <span> Gender : </span><?php echo $fetch_info['gender']?>  </h3>
+
     </div>
 </div>
 

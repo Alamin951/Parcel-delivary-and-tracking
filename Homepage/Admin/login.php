@@ -18,6 +18,12 @@ if(isset($_SESSION['login_id']))
 header("location:index.php?page=home");
 
 ?>
+
+<style>
+  body{
+    background-image: url("./assets/uploads/pr.jpg");
+  }
+</style>
 <?php include 'header.php' ?>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -26,6 +32,7 @@ header("location:index.php?page=home");
   </div>
   <!-- /.login-logo -->
   <div class="card">
+    <img src="./assets/uploads/pr2.jpg" alt="">
     <div class="card-body login-card-body">
       <form action="" id="login-form">
         <div class="input-group mb-3">

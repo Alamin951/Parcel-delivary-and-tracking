@@ -15,7 +15,7 @@
   }
   ob_end_flush();
 
-	include 'header.php' 
+	include 'header.php';
 ?>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -122,7 +122,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="http://localhost:8080">PDT.com</a>.</strong>
+    <!-- <strong>Copyright &copy; 2022 <a href="http://localhost:8080">PDT.com</a>.</strong> -->
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b><?php echo $_SESSION['system']['name'] ?></b>

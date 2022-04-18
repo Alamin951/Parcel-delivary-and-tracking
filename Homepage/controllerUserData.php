@@ -2,17 +2,18 @@
 session_start();
 require "./Admin/connection.php";
 $email = "";
-$fullName = "";
+$firstname = "";
 $phone = "";
 $gender = "";
 $birthdate="";
 $address = "";
+$type ="";
 $msg = "";
 $errors = array();
 
 
 if (isset($_POST['signup'])) {
-    $fullName = mysqli_real_escape_string($conn, $_POST['fullName']);    
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
@@ -20,6 +21,7 @@ if (isset($_POST['signup'])) {
     $address = mysqli_real_escape_string($conn, $_POST['address']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+    $type = mysqli_real_escape_string($conn, $_POST['type']);
 
     $filename = $_FILES["image"]["name"];
     $tempname = $_FILES["image"]["tmp_name"];    
@@ -28,7 +30,7 @@ if (isset($_POST['signup'])) {
     if ($password !== $cpassword) {
         $errors['password'] = "Confirm password not matched!";
     }
-    $email_check = "SELECT * FROM userinfo WHERE email = '$email'";
+    $email_check = "SELECT * FROM users WHERE email = '$email'";
     $res = mysqli_query($conn, $email_check);
     if (mysqli_num_rows($res) > 0) {
         $errors['email'] = "Email that you have entered is already exist!";
@@ -37,8 +39,8 @@ if (isset($_POST['signup'])) {
         $encpass = password_hash($password, PASSWORD_BCRYPT);
         $code = rand(999999, 111111);
         $status = "not_verified";
-        $insert_data = "INSERT INTO userinfo (fullName, email, phone, gender,birthdate, address,filename,  password, code, status)
-                        values('$fullName', '$email', '$phone','$gender','$birthdate','$address','$filename', '$encpass', '$code', '$status')";
+        $insert_data = "INSERT INTO users (firstname, email, phone, gender,birthdate, address,filename,  password, code, status,type)
+                        values('$firstname', '$email', '$phone','$gender','$birthdate','$address','$filename', '$encpass', '$code', '$status', '$type')";
                         
 
         $data_check = mysqli_query($conn, $insert_data);
@@ -77,7 +79,7 @@ if (isset($_POST['signup'])) {
 if (isset($_POST['check'])) {
     $_SESSION['info'] = "";
     $otp_code = mysqli_real_escape_string($conn, $_POST['otp']);
-    $check_code = "SELECT * FROM userinfo WHERE code = $otp_code";
+    $check_code = "SELECT * FROM users WHERE code = $otp_code";
     $code_res = mysqli_query($conn, $check_code);
     if (mysqli_num_rows($code_res) > 0) {
         $fetch_data = mysqli_fetch_assoc($code_res);
@@ -85,10 +87,10 @@ if (isset($_POST['check'])) {
         $email = $fetch_data['email'];
         $code = 0;
         $status = 'verified';
-        $update_otp = "UPDATE userinfo SET code = $code, status = '$status' WHERE code = $fetch_code";
+        $update_otp = "UPDATE users SET code = $code, status = '$status' WHERE code = $fetch_code";
         $update_res = mysqli_query($conn, $update_otp);
         if ($update_res) {
-            $_SESSION['fullName'] = $fullName;
+            $_SESSION['firstname'] = $firstname;
             $_SESSION['email'] = $email;
             header('location: home.php');
             exit();
@@ -105,7 +107,7 @@ if (isset($_POST['check'])) {
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $check_email = "SELECT * FROM userinfo WHERE email = '$email'";
+    $check_email = "SELECT * FROM users WHERE email = '$email'";
     $res = mysqli_query($conn, $check_email);
     if (mysqli_num_rows($res) > 0) {
         $fetch = mysqli_fetch_assoc($res);
@@ -134,11 +136,11 @@ if (isset($_POST['login'])) {
 
 if (isset($_POST['check-email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $check_email = "SELECT * FROM userinfo WHERE email='$email'";
+    $check_email = "SELECT * FROM users WHERE email='$email'";
     $run_sql = mysqli_query($conn, $check_email);
     if (mysqli_num_rows($run_sql) > 0) {
         $code = rand(999999, 111111);
-        $insert_code = "UPDATE userinfo SET code = $code WHERE email = '$email'";
+        $insert_code = "UPDATE users SET code = $code WHERE email = '$email'";
         $run_query =  mysqli_query($conn, $insert_code);
         if ($run_query) {
             $subject = "Password Reset Code";
@@ -166,7 +168,7 @@ if (isset($_POST['check-email'])) {
 if (isset($_POST['check-reset-otp'])) {
     $_SESSION['info'] = "";
     $otp_code = mysqli_real_escape_string($conn, $_POST['otp']);
-    $check_code = "SELECT * FROM userinfo WHERE code = $otp_code";
+    $check_code = "SELECT * FROM users WHERE code = $otp_code";
     $code_res = mysqli_query($conn, $check_code);
     if (mysqli_num_rows($code_res) > 0) {
         $fetch_data = mysqli_fetch_assoc($code_res);
@@ -192,7 +194,7 @@ if (isset($_POST['change-password'])) {
         $code = 0;
         $email = $_SESSION['email'];
         $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $update_pass = "UPDATE userinfo SET code = $code, password = '$encpass' WHERE email = '$email'";
+        $update_pass = "UPDATE users SET code = $code, password = '$encpass' WHERE email = '$email'";
         $run_query = mysqli_query($conn, $update_pass);
         if ($run_query) {
             $info = "Successfully changed your password. Now you can login with your new password.";
