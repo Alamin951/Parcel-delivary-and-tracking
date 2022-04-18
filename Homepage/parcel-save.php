@@ -1,39 +1,53 @@
-<?php require_once "fetch.php"; ?>
-
-<<?php
+<?php
 include './Admin/connection.php';
-    $name = mysqli_real_escape_string($conn, $_REQUEST['name']);    
-    $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
-    $relation = mysqli_real_escape_string($conn, $_REQUEST['relation']);
-    $r_email = mysqli_real_escape_string($conn, $_REQUEST['r_email']);
-    $phone = mysqli_real_escape_string($conn, $_REQUEST['phone']);
-    $another_phone = mysqli_real_escape_string($conn, $_REQUEST['another_phone']);
-    $street = mysqli_real_escape_string($conn, $_REQUEST['street']);
-    $area = mysqli_real_escape_string($conn, $_REQUEST['area']);    
-    $thana = mysqli_real_escape_string($conn, $_REQUEST['thana']);
-    $city = mysqli_real_escape_string($conn, $_REQUEST['city']);
-    $zipcode = mysqli_real_escape_string($conn, $_REQUEST['zipcode']);
-    $type = mysqli_real_escape_string($conn, $_REQUEST['type']);
-    $urgency = mysqli_real_escape_string($conn, $_REQUEST['urgency']);
-    $breakable = mysqli_real_escape_string($conn, $_REQUEST['breakable']);
-
-    $customer_id = $fetch_info['id'];
-
-
-    $status = "0";
-    $order_code = 'asdfg';
-    $sql = "INSERT INTO order-form(name,email,relation,r_email,phone,another_phone,street,area,thana,city,customer_id,order_code)
-                VALUES ('$name','$email','$relation','$r_email','$phone','$another_phone','$street','$area','$thana','$city',$customer_id,'$order_code');";
     
-    $data_check = mysqli_query($conn, $sql);
+$sender_name="";
+$sender_address="";
+$sender_contact="";
+$recipient_name="";
+$recipient_address="";
+$recipient_contact="";
+$parcel_type="";
+$from_branch_id="";
+$weight="";
+$height="";
+$width="";
+$length="";
+$errors=array();
 
-    if($data_check){
-        echo 'data inserted';
-        header('Location: home.php');
+if (isset($_POST['order-now'])) {
+    $sender_name = mysqli_real_escape_string($conn, $_POST['sender_name']);
+    $sender_address = mysqli_real_escape_string($conn, $_POST['sender_address']);
+    $sender_contact = mysqli_real_escape_string($conn, $_POST['sender_contact']);
+    $recipient_name = mysqli_real_escape_string($conn, $_POST['recipient_name']);
+    $recipient_address = mysqli_real_escape_string($conn, $_POST['recipient_address']);
+    $recipient_contact = mysqli_real_escape_string($conn, $_POST['recipient_contact']);
+    $parcel_type = mysqli_real_escape_string($conn, $_POST['parcel_type']);
+    $from_branch_id = mysqli_real_escape_string($conn, $_POST['from_branch_id']);
+    $weight = mysqli_real_escape_string($conn, $_POST['weight']);
+    $height = mysqli_real_escape_string($conn, $_POST['height']);
+    $width = mysqli_real_escape_string($conn, $_POST['width']);
+    $length = mysqli_real_escape_string($conn, $_POST['length']);
+    
+    if (count($errors) === 0) {
+        $reference_number = rand(9999999999999, 1111111111111);
+        $type="1";
+        $to_branch_id="6";
+        $price= "500";
+        $status="0";
+
+        $sql= "INSERT INTO parcels (reference_number,sender_name, sender_address, sender_contact, recipient_name,recipient_address, recipient_contact,parcel_type,type,  from_branch_id,to_branch_id, weight, height,width,length,price,status)
+                        values(	'$reference_number','$sender_name', '$sender_address', '$sender_contact','$recipient_name','$recipient_address','$recipient_contact','$parcel_type','$type', '$from_branch_id','$to_branch_id', '$weight', '$height', '$length','$price','$status')";
+
+        if (!mysqli_query($conn, $sql)) {
+            printf("%d Row inserted.\n", mysqli_affected_rows($conn));
+        }
+
+        mysqli_close($conn);
+
+        }
+
     }
-    else{
-        echo 'error';
-    }
 
-
+  
 ?>

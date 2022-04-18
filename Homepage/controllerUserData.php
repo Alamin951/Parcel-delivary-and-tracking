@@ -211,38 +211,5 @@ if (isset($_POST['login-now'])) {
     header('Location: log-sign.php');
 }
 
-// if(isset($_POST['order-now'])){
-//     $name = mysqli_real_escape_string($conn, $_POST['name']);    
-//     $email = mysqli_real_escape_string($conn, $_POST['email']);
-//     $relation = mysqli_real_escape_string($conn, $_POST['relation']);
-//     $r_email = mysqli_real_escape_string($conn, $_POST['r_email']);
-//     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-//     $another_phone = mysqli_real_escape_string($conn, $_POST['another_phone']);
-//     $street = mysqli_real_escape_string($conn, $_POST['street']);
-//     $area = mysqli_real_escape_string($conn, $_POST['area']);    
-//     $thana = mysqli_real_escape_string($conn, $_POST['thana']);
-//     $city = mysqli_real_escape_string($conn, $_POST['city']);
-//     $zipcode = mysqli_real_escape_string($conn, $_POST['zipcode']);
-//     $type = mysqli_real_escape_string($conn, $_POST['type']);
-//     $urgency = mysqli_real_escape_string($conn, $_POST['urgency']);
-//     $breakable = mysqli_real_escape_string($conn, $_POST['breakable']);
 
-//     $customer_id = $fetch_info['id'];
-
-
-//     $status = "0";
-//     $order_code = 'asdfg';
-//     $insert_data = "INSERT INTO order-form('name', 'email', 'relation', 'r_email', 'phone', 'another_phone', 'street', 'area', 'thana', 'city', 'zipcode', 'type', 'urgency', 'breakable', 'status', 'customer_id', 'order_code') 
-//                 VALUES ('$name','$email','$relation','$r_email','$phone','$another_phone','$street','$area','$thana','$city','$zipcode','$type','$urgency','$breakable','$status','$customer_id','$order_code')";
-//     $data_check = mysqli_query($conn, $insert_data);
-
-//     if($data_check){
-//         echo 'data inserted';
-//         header('Location: profile.php');
-//     }
-//     else{
-//         echo 'error';
-//     }
-
-// }
 ?>

@@ -1,6 +1,4 @@
-<?php require_once "controllerUserData.php"; ?>
-<?php require_once "fetch.php"; ?>
-
+<?php require_once "parcel-save.php"; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -148,15 +146,21 @@
 
 
     <div class="main-block">
-    <form action="parcel-save.php" method="POST">
+    <form action="parcel-form.php" method="POST">
       <h1>Prcel order</h1>
       <fieldset>
         <legend>
           <h3>Reciver Details</h3>
         </legend>
         <div  class="reciver-details">
-          <div><label>Name*</label><input type="text" name="name" required></div>
-          <div><label>Email*</label><input type="email" name="email" required></div>
+          <div><label>Your Name*</label><input type="text" name="sender_name" required></div>
+          <div><label>Sender Name*</label><input type="text" name="recipient_name" required></div>
+          <div><label>Your Address*</label><input type="text" name="sender_address" required></div>
+          <div><label>Reciver Address*</label><input type="text" name="recipient_address" required></div>
+          <div><label>Your Contact*</label><input type="text" name="sender_contact" required></div>
+          <div><label>Receiver Contact*</label><input type="text" name="recipient_contact" required></div>
+
+          <!-- <div><label>Email*</label><input type="email" name="email" required></div>
           <div><label>Relation</label><input type="text" name="relation"></div>
           <div><label>Repeat email*</label><input type="email" name="r_email" required></div>
           <div><label>Phone*</label><input type="text" name="phone" required></div>
@@ -165,7 +169,7 @@
           <div><label>Area*</label><input type="text" name="area" required></div>
           <div><label>Thana*</label><input type="text" name="thana" required></div>
           <div><label>City*</label><input type="text" name="city" required></div>
-          <div><label>Zip code</label><input type="number" name="zipcode"></div>
+          <div><label>Zip code</label><input type="number" name="zipcode"></div> -->
         </div>
       </fieldset>
       <fieldset>
@@ -177,7 +181,7 @@
            
             <div>
               <label>Parcel type*</label>  
-              <select name="type" required>
+              <select name="parcel_type" required>
                 <option disabled selected>Please choose</option>
                 <option value="Document">Document</option>
                 <option value="Money">Money</option>
@@ -187,6 +191,8 @@
               </select>
             </div>
             <div><label>Weight</label><input type="number" name="weight"> <strong>g</strong>  </div>
+            <div><label>Height</label><input type="number" name="height"> <strong>inch</strong>  </div>
+            <div><label>Length</label><input type="number" name="length"> <strong>m</strong>  </div>
           </div>
           <div>
             <div>
@@ -200,18 +206,19 @@
             </div>
             <div>
               <label>Branches*</label>
-              <select name="breakable">
+              <select name="from_branch_id">
                 <option disabled selected> Please state the Branch</option>
-                <?php include './Admin/connection.php'; ?>
 
                 <?php 
                   $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
                     while($row = $branches->fetch_assoc()):
                 ?>
-                  <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected":'' ?>><?php echo $row['branch_code']. ' | '.(ucwords($row['address'])) ?></option>
+                  <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected":'' ?>><?php echo (ucwords($row['address'])) ?></option>
                 <?php endwhile; ?>
               </select>
             </div>
+            <div><label>Width</label><input type="number" name="width"> <strong>m</strong>  </div>
+
           </div>
         </div>
       </fieldset>
@@ -227,7 +234,7 @@
             <input type="checkbox" name="checkbox"><span>I want to send this personallzed parcel by your site</span>
           </div>
       </fieldset>
-      <a href="p_payment.php"><button type="submit" name="order-now">Submit</button></a>
+      <a ><button type="submit" name="order-now">Submit</button></a>
     </form>
     </div>
     <?php include 'footer.html'; ?> 
