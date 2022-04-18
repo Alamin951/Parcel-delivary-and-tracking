@@ -25,7 +25,7 @@
 			<h2 class="logo"> My<span>Parcel</span></h2>
 			<ul>
 				<li><a href="#">Home</a></li>
-				<li><a href="#about">About Us</a></li>
+				<li><a href="parcels.php">Parcels</a></li>
 				<li><a href="parcel-form.php">Place Parcel</a></li>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="contactUs.php">Contact</a></li>

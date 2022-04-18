@@ -148,7 +148,7 @@
 
 
     <div class="main-block">
-    <form action="parcel-form.php" method="POST">
+    <form action="parcel-save.php" method="POST">
       <h1>Prcel order</h1>
       <fieldset>
         <legend>
@@ -199,11 +199,17 @@
               </select>
             </div>
             <div>
-              <label>Breakable?*</label>
+              <label>Branches*</label>
               <select name="breakable">
-                <option disabled selected> Please state the urgency</option>
-                <option value="1">yes</option>
-                <option value="0">No</option>
+                <option disabled selected> Please state the Branch</option>
+                <?php include './Admin/connection.php'; ?>
+
+                <?php 
+                  $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
+                    while($row = $branches->fetch_assoc()):
+                ?>
+                  <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected":'' ?>><?php echo $row['branch_code']. ' | '.(ucwords($row['address'])) ?></option>
+                <?php endwhile; ?>
               </select>
             </div>
           </div>
@@ -228,40 +234,3 @@
   </body>
 </html>
 
-<?php
-include 'connection.php';
-if(isset($_POST['order-now'])){
-    $name = mysqli_real_escape_string($con, $_POST['name']);    
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $relation = mysqli_real_escape_string($con, $_POST['relation']);
-    $r_email = mysqli_real_escape_string($con, $_POST['r_email']);
-    $phone = mysqli_real_escape_string($con, $_POST['phone']);
-    $another_phone = mysqli_real_escape_string($con, $_POST['another_phone']);
-    $street = mysqli_real_escape_string($con, $_POST['street']);
-    $area = mysqli_real_escape_string($con, $_POST['area']);    
-    $thana = mysqli_real_escape_string($con, $_POST['thana']);
-    $city = mysqli_real_escape_string($con, $_POST['city']);
-    $zipcode = mysqli_real_escape_string($con, $_POST['zipcode']);
-    $type = mysqli_real_escape_string($con, $_POST['type']);
-    $urgency = mysqli_real_escape_string($con, $_POST['urgency']);
-    $breakable = mysqli_real_escape_string($con, $_POST['breakable']);
-
-    $customer_id = $fetch_info['id'];
-
-
-    $status = "0";
-    $order_code = 'asdfg';
-    $insert_data = "INSERT INTO order-form
-                VALUES ('$name','$email','$relation','$r_email','$phone','$another_phone','$street','$area','$thana','$city','$zipcode','$type','$urgency','$breakable','$status','$customer_id','$order_code')";
-    $data_check = mysqli_query($con, $insert_data);
-
-    if($data_check){
-        echo 'data inserted';
-        header('Location: p_payment.php');
-    }
-    else{
-        echo 'error';
-    }
-
-}
-?>
