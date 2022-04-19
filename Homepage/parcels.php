@@ -1,13 +1,13 @@
 <?php include './Admin/connection.php'; ?>
 <?php
-      include 'navbar.html';
+      include 'navbar.php';
     ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
 
-    <div class="container mb-3 mt-3">
+    <div class="container mb-3 mt-3" style="height: 100vh;">
         <table class="table table-striped table-bordered mydatatables" style="width: 100%;">
             <thead>
                 <th>#</th>
@@ -42,7 +42,7 @@
             </tbody>
         </table>
     </div>
-
+<?php include 'footer.php' ?>
 
 
 

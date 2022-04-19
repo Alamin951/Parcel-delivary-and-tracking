@@ -141,7 +141,7 @@
   </head>
   <body>
     <?php
-      include 'navbar.html';
+      include 'navbar.php';
     ?>
 
 
@@ -237,7 +237,7 @@
       <a ><button type="submit" name="order-now">Submit</button></a>
     </form>
     </div>
-    <?php include 'footer.html'; ?> 
+    <?php include 'footer.php'; ?> 
   </body>
 </html>
 
