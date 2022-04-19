@@ -1,5 +1,6 @@
 <?php
-include './Admin/connection.php';
+session_start();
+require "./Admin/connection.php";
     
 $sender_name="";
 $sender_address="";
@@ -31,23 +32,25 @@ if (isset($_POST['order-now'])) {
     
     if (count($errors) === 0) {
         $reference_number = rand(9999999999999, 1111111111111);
-        $type="1";
-        $to_branch_id="6";
-        $price= "500";
-        $status="0";
+        $type=1;
+        $to_branch_id="NULL";
+        $price= ($weight*30)+($height*10)+200;
+        $status=0;
+        // $from_branch_id="2";
 
-        $sql= "INSERT INTO parcels (reference_number,sender_name, sender_address, sender_contact, recipient_name,recipient_address, recipient_contact,parcel_type,type,  from_branch_id,to_branch_id, weight, height,width,length,price,status)
-                        values(	'$reference_number','$sender_name', '$sender_address', '$sender_contact','$recipient_name','$recipient_address','$recipient_contact','$parcel_type','$type', '$from_branch_id','$to_branch_id', '$weight', '$height', '$length','$price','$status')";
+        $sql= "INSERT INTO parcels (reference_number,sender_name, sender_address, sender_contact, recipient_name,recipient_address, recipient_contact,parcel_type,type, from_branch_id,to_branch_id, weight, height,width,length,price,status)
+                        values(	'$reference_number','$sender_name', '$sender_address', '$sender_contact','$recipient_name','$recipient_address','$recipient_contact','$parcel_type','$type', '$from_branch_id','$to_branch_id', '$weight', '$height','$width', '$length','$price','$status')";
 
-        if (!mysqli_query($conn, $sql)) {
-            printf("%d Row inserted.\n", mysqli_affected_rows($conn));
+        $data = mysqli_query($conn, $sql);
+
+        if($data){
+            echo "Success";
+            header('location: p_payment.php');
+            
         }
-
-        mysqli_close($conn);
-
+        else{
+            echo "error";
         }
-
     }
-
-  
+}
 ?>
