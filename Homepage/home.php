@@ -28,7 +28,7 @@
 				<li><a href="parcels.php">Parcels</a></li>
 				<li><a href="parcel-form.php">Place Parcel</a></li>
 				<li><a href="profile.php">Profile</a></li>
-				<li><a href="contactUs.php">Contact</a></li>
+				<li><a href="#">Trace Parcel</a></li>
                 <li><button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
 			</ul>
 			
@@ -38,12 +38,7 @@
 			<h4>Welcome,<span><?php echo $fetch_info['fullName']; ?></span> to our</h4>
 			<h1>Parcel delivery <span> & Tracking</span></h1>
 			<h3>your reliable parcel service.</h3>
-			<div class="newslatter">
-				<form>
-					<input type="text" name="text" id="search" placeholder="type here">
-					<input type="submit" name="submit" value="Search">
-				</form>
-			</div>
+			
 		</div>
 	</div>
 
@@ -106,7 +101,7 @@
 	</div>
 
 	<!-- footer -->
-	<?php include 'footer.html'; ?>
+	<?php include 'footer.php'; ?>
     
 </body>
 </html>

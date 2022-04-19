@@ -16,9 +16,8 @@
     
     <header>
         <div class="user">
-            <img src="image/profile.png" alt="">
+            <img src="userProfile/<?php echo $fetch_info['filename'] ?>" alt="">
             <h3 class="name"><?php echo $fetch_info['fullName']?> </h3>
-            <p class="post">Admin</p>
     </div>
 
     <nav class="navbar">
@@ -44,7 +43,6 @@
     <div class="info">
         
         <h3> <span> name : </span> <?php echo $fetch_info['fullName']?> </h3>
-        <h3> <span> age : </span> -- </h3>
         <h3> <span> Email : </span> <?php echo $fetch_info['email']?> </h3>
         <h3> <span> post : </span> Admin </h3>
         <h3> <span> Phone Number : </span> <?php echo $fetch_info['phone']?> </h3>
