@@ -1,7 +1,6 @@
 <?php
 require_once "controllerUserData.php";
 require_once "fetch.php";
-$amount = 10000;
 
 
 
@@ -11,12 +10,12 @@ $amount = 10000;
 $post_data = array();
 $post_data['store_id'] = "parce624beb19e7400";
 $post_data['store_passwd'] = "parce624beb19e7400@ssl";
-$post_data['total_amount'] = $amount;
+$post_data['total_amount'] = 5000;
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_TEST_".uniqid();
 $post_data['success_url'] = "http://localhost:8080/PDT/Homepage/home.php";
-$post_data['fail_url'] = "http://localhost:8080/PDT/Homepage/p_fail.php";
-$post_data['cancel_url'] = "http://localhost:8080/PDT/Homepage/p_cancel.php";
+$post_data['fail_url'] = "http://localhost:8080/PDT/Homepage/parcel-form.php";
+$post_data['cancel_url'] = "http://localhost:8080/PDT/Homepage/parcel-form.php";
 # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
 
 # EMI INFO
@@ -25,7 +24,7 @@ $post_data['emi_max_inst_option'] = "9";
 $post_data['emi_selected_inst'] = "9";
 
 # CUSTOMER INFORMATION
-$post_data['cus_name'] = $fetch_info['fullName'];
+$post_data['cus_name'] = $fetch_info['firstname'];
 $post_data['cus_email'] = $fetch_info['email'];
 $post_data['cus_add1'] = $fetch_info['address'];
 // $post_data['cus_add2'] = "Dhaka";
