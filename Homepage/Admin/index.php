@@ -129,11 +129,6 @@
     </div>
   </footer>
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<!-- Bootstrap -->
 <?php include 'footer.php' ?>
 </body>
 </html>

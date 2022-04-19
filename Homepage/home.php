@@ -14,7 +14,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+  <style>
+	  nav #icon{
+			color: white;
+			font-size: 30px;
+			line-height: 80px;
+			float: right;
+			margin-right: 40px;
+			cursor: pointer;
+			display: none;
+		}
+	  @media (max-width: 700px){
+			label.logo{
+				font-size: 32px;
+				padding-left: 60px;
+			}
+			nav ul{
+				margin-right: 20px;
+			}
+			nav a{
+				font-size: 17px;
+			}
+		}
+		@media (max-width: 700px){
+			nav #icon{
+				display: block;
+			}
+			nav ul{
+				position: fixed;
+				width: 100%;
+				height: 120vh;
+				background: #2f3640 ;
+				top: 100px;
+				left: -100%;
+				text-align: center;
+				transition: all .5s;
+			}
+			nav li{
+				display: block;
+				margin: 50px 0;
+				line-height: 30px;
+				list-style-type: none;
+
+				
+			}
+			
+			nav ul.show{
+				left: 0;
+			}
+		}
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#icon').click(function(){
+				$('ul').toggleClass('show');
+			});
+		});
+	</script>
 
 
 </head>
@@ -31,6 +89,9 @@
 				<li><a href="./Admin/asset.php">Trace Parcel</a></li>
                 <li><button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
 			</ul>
+			<label id="icon">
+				<i class="fas fa-bars"></i>
+			</label>
 			
 		</nav>
 
