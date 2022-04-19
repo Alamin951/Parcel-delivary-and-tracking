@@ -239,6 +239,7 @@ if (isset($_POST['order-now'])) {
     $recipient_address = mysqli_real_escape_string($conn, $_POST['recipient_address']);
     $recipient_contact = mysqli_real_escape_string($conn, $_POST['recipient_contact']);
     $parcel_type = mysqli_real_escape_string($conn, $_POST['parcel_type']);
+    $to_branch_id= mysqli_real_escape_string($conn, $_POST['to_branch_id']);
     $from_branch_id = mysqli_real_escape_string($conn, $_POST['from_branch_id']);
     $weight = mysqli_real_escape_string($conn, $_POST['weight']);
     $height = mysqli_real_escape_string($conn, $_POST['height']);
@@ -248,7 +249,6 @@ if (isset($_POST['order-now'])) {
     if (count($errors) === 0) {
         $reference_number = rand(9999999999999, 1111111111111);
         $type=1;
-        $to_branch_id="NULL";
         $price= $weight*40;
         $status=0;
         // $from_branch_id="2";

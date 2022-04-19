@@ -2,7 +2,7 @@
 require_once "controllerUserData.php";
 require_once "fetch.php";
 
-
+$fe = "SELECT * FROM parcels WHERE ";
 
 //SSL
 

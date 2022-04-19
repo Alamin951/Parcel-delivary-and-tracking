@@ -195,13 +195,17 @@
             <div><label>Length</label><input type="number" name="length"> <strong>m</strong>  </div>
           </div>
           <div>
-            <div>
-              <label>Urgency*</label>              
-              <select name="urgency">
-                <option disabled selected> Please state the urgency</option>
-                <option value="Normal">Normal</option>
-                <option value="Urgent">Urgent</option>
-                <option value="Extremly Important">Extremly Important</option>
+          <div>
+              <label> To Branches*</label>
+              <select name="to_branch_id">
+                <option disabled selected> Please state the Branch</option>
+
+                <?php 
+                  $branches = $conn->query("SELECT *,concat(street,', ',city,', ',state,', ',zip_code,', ',country) as address FROM branches");
+                    while($row = $branches->fetch_assoc()):
+                ?>
+                  <option value="<?php echo $row['id'] ?>" <?php echo isset($from_branch_id) && $from_branch_id == $row['id'] ? "selected":'' ?>><?php echo (ucwords($row['address'])) ?></option>
+                <?php endwhile; ?>
               </select>
             </div>
             <div>
