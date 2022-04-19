@@ -1,6 +1,7 @@
 <?php include './Admin/connection.php'; ?>
 <?php
       include 'navbar.php';
+      include 'fetch.php';
     ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -23,10 +24,24 @@
                 <?php
 					$i = 1;
 					$where = "";
+                    $id = $fetch_info['id'];
 					
-					$qry = $conn->query("SELECT * from parcels $where order by  unix_timestamp(date_created) desc ");
+					$qry = $conn->query("SELECT * from parcels WHERE users_id = '$id' ");
 					while($row= $qry->fetch_assoc()):
-					?>
+					
+                    // $sql = "SELECT reference_number, sender_name,recipient_name,weight,height,length FROM parcels WHERE ; ";
+                    // $result = $conn->query($sql);
+
+                    // if ($result->num_rows > 0) {
+                    // echo "<table><tr><th>Ref</th><th>Send</th><th>Re</th><th>wei</th><th>hei</th><tr>len</tr></tr>";
+                    // // output data of each row
+                    // while($row = $result->fetch_assoc()) {
+                    //     echo "<tr><td>".$row["reference_number"]."</td><td>".$row["sender_name"]." ".$row["recipient_name"]."</td><td>".$row["weight"]."</td><td>".$row["height"]."</td><td>".$row["length"]."</td></tr>";
+                    // }
+                    // echo "</table>";
+                    // } else {
+                    // echo "0 results";
+                    ?>
 					<tr>
 						<td class="text-center"><?php echo $i++ ?></td>
 						<td><b><?php echo ($row['reference_number']) ?></b></td>

@@ -1,8 +1,8 @@
 <?php
 require_once "controllerUserData.php";
-require_once "fetch.php";
+// require_once "fetch.php";
 
-$fe = "SELECT * FROM parcels WHERE ";
+$price = 960;
 
 //SSL
 
@@ -10,7 +10,7 @@ $fe = "SELECT * FROM parcels WHERE ";
 $post_data = array();
 $post_data['store_id'] = "parce624beb19e7400";
 $post_data['store_passwd'] = "parce624beb19e7400@ssl";
-$post_data['total_amount'] = 5000;
+$post_data['total_amount'] = $price;
 $post_data['currency'] = "BDT";
 $post_data['tran_id'] = "SSLCZ_TEST_".uniqid();
 $post_data['success_url'] = "http://localhost:8080/PDT/Homepage/home.php";

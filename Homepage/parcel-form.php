@@ -1,4 +1,6 @@
 <?php require_once "controllerUserData.php"; ?>
+<?php require_once "fetch.php"; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -154,12 +156,15 @@
           <h3>Reciver Details</h3>
         </legend>
         <div  class="reciver-details">
-          <div><label>Your Name*</label><input type="text" name="sender_name" required></div>
-          <div><label>Sender Name*</label><input type="text" name="recipient_name" required></div>
-          <div><label>Your Address*</label><input type="text" name="sender_address" required></div>
+          <div><label>Your Name*</label><input type="text" name="sender_name" value="<?php echo $fetch_info['firstname']?>" required></div>
+          <div><label>Recepient Name*</label><input type="text" name="recipient_name" required></div>
+          <div><label>Your Address*</label><input type="text" name="sender_address" value="<?php echo $fetch_info['address']?>" required></div>
           <div><label>Reciver Address*</label><input type="text" name="recipient_address" required></div>
-          <div><label>Your Contact*</label><input type="text" name="sender_contact" required></div>
+          <div><label>Your Contact*</label><input type="text" name="sender_contact" value="0<?php echo $fetch_info['phone']?>" required></div>
           <div><label>Receiver Contact*</label><input type="text" name="recipient_contact" required></div>
+          <div hidden><label hidden>users_id*</label><input hidden type="number" name="users_id" value="<?php echo $fetch_info['id']?>"></div>
+
+
 
           <!-- <div><label>Email*</label><input type="email" name="email" required></div>
           <div><label>Relation</label><input type="text" name="relation"></div>
@@ -179,21 +184,11 @@
         </legend>
         <div  class="package-details">
           <div>
-           
-            <div>
-              <label>Parcel type*</label>  
-              <select name="parcel_type" required>
-                <option disabled selected>Please choose</option>
-                <option value="Document">Document</option>
-                <option value="Money">Money</option>
-                <option value="Accessories">Accessories</option>
-                <option value="Food">Food</option>
-                <option value="Electronics">Electronics</option>
-              </select>
-            </div>
-            <div><label>Weight</label><input type="number" name="weight"> <strong>g</strong>  </div>
-            <div><label>Height</label><input type="number" name="height"> <strong>inch</strong>  </div>
-            <div><label>Length</label><input type="number" name="length"> <strong>m</strong>  </div>
+            <div><label>Weight</label><input type="number" name="weight"> <strong>kg</strong>  </div>
+            <div><label>Height</label><input type="number" name="weight"> <strong>cm</strong>  </div>
+            <div><label>Length</label><input type="number" name="length"> <strong>cm</strong>  </div>
+            <div><label>Width</label><input type="number" name="width"> <strong>cm</strong>  </div>
+
           </div>
           <div>
           <div>
@@ -210,7 +205,7 @@
               </select>
             </div>
             <div>
-              <label>Branches*</label>
+              <label>From Branches*</label>
               <select name="from_branch_id">
                 <option disabled selected> Please state the Branch</option>
 
@@ -222,7 +217,17 @@
                 <?php endwhile; ?>
               </select>
             </div>
-            <div><label>Width</label><input type="number" name="width"> <strong>m</strong>  </div>
+            <div>
+              <label>Parcel type*</label>  
+              <select name="parcel_type" required>
+                <option disabled selected>Please choose</option>
+                <option value="Document">Document</option>
+                <option value="Money">Money</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Food">Food</option>
+                <option value="Electronics">Electronics</option>
+              </select>
+            </div>
 
           </div>
         </div>
