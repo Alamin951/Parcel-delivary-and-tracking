@@ -229,6 +229,7 @@ $weight="";
 $height="";
 $width="";
 $length="";
+$users_id="";
 $errors=array();
 
 if (isset($_POST['order-now'])) {
@@ -245,6 +246,8 @@ if (isset($_POST['order-now'])) {
     $height = mysqli_real_escape_string($conn, $_POST['height']);
     $width = mysqli_real_escape_string($conn, $_POST['width']);
     $length = mysqli_real_escape_string($conn, $_POST['length']);
+    $users_id = mysqli_real_escape_string($conn, $_POST['users_id']);
+
     
     if (count($errors) === 0) {
         $reference_number = rand(9999999999999, 1111111111111);
@@ -253,8 +256,8 @@ if (isset($_POST['order-now'])) {
         $status=0;
         // $from_branch_id="2";
 
-        $sql= "INSERT INTO parcels (reference_number,sender_name, sender_address, sender_contact, recipient_name,recipient_address, recipient_contact,parcel_type,type, from_branch_id,to_branch_id, weight, height,width,length,price,status)
-                        values(	'$reference_number','$sender_name', '$sender_address', '$sender_contact','$recipient_name','$recipient_address','$recipient_contact','$parcel_type','$type', '$from_branch_id','$to_branch_id', '$weight', '$height','$width', '$length','$price','$status')";
+        $sql= "INSERT INTO parcels (users_id,reference_number,sender_name, sender_address, sender_contact, recipient_name,recipient_address, recipient_contact,parcel_type,type, from_branch_id,to_branch_id, weight, height,width,length,price,status)
+                        values(	'$users_id','$reference_number','$sender_name', '$sender_address', '$sender_contact','$recipient_name','$recipient_address','$recipient_contact','$parcel_type','$type', '$from_branch_id','$to_branch_id', '$weight', '$height','$width', '$length','$price','$status')";
 
         $data = mysqli_query($conn, $sql);
 
