@@ -597,7 +597,7 @@
                         <div class="col_half">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Full Name" name="fullName" required />
+                                <input type="text" placeholder="Full Name" name="firstname" required />
                             </div>
                         </div>
 
@@ -652,6 +652,10 @@
                     <div class="input-field">
                         <i class="fas fa-address-card"></i>
                         <input type="text" placeholder="Address" name="address" required <?php echo $address ?> />
+                    </div>
+
+                    <div hidden class="input-field">
+                        <input hidden type="text" name="type" value="3" />
                     </div>
 
                     <!-- <div class="input-field" hidden>

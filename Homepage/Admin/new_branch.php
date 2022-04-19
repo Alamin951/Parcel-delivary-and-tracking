@@ -26,11 +26,11 @@
 
             <div class="row">
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">State</label>
+                <label for="" class="control-label">State/District</label>
                 <textarea name="state" id="" cols="30" rows="2" class="form-control"><?php echo isset($state) ? $state : '' ?></textarea>
               </div>
               <div class="col-sm-6 form-group ">
-                <label for="" class="control-label">Zip Code/ Postal Code</label>
+                <label for="" class="control-label">Zip Code</label>
                 <textarea name="zip_code" id="" cols="30" rows="2" class="form-control"><?php echo isset($zip_code) ? $zip_code : '' ?></textarea>
               </div>
             </div>
