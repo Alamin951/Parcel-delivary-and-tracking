@@ -140,6 +140,7 @@
     </style>
   </head>
   <body>
+    <!-- navbar -->
     <?php
       include 'navbar.php';
     ?>
