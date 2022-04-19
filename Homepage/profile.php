@@ -16,7 +16,7 @@
     
     <header>
         <div class="user">
-            <img src="image/profile.png" alt="">
+            <img src="userProfile/<?php echo $fetch_info['filename']?>" alt="">
             <h3 class="name"><?php echo $fetch_info['firstname']?> </h3>
             <p class="post"></p>
     </div>

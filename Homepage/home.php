@@ -28,7 +28,7 @@
 				<li><a href="parcels.php">Parcels</a></li>
 				<li><a href="parcel-form.php">Place Parcel</a></li>
 				<li><a href="profile.php">Profile</a></li>
-				<li><a href="#">Trace Parcel</a></li>
+				<li><a href="./Admin/asset.php">Trace Parcel</a></li>
                 <li><button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button></li>
 			</ul>
 			
