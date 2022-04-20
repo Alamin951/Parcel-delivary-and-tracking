@@ -4,6 +4,9 @@ require_once "controllerUserData.php";
 
 $price = 960;
 
+$qry = $conn->query("SELECT price from parcels");
+
+
 //SSL
 
 /* PHP */

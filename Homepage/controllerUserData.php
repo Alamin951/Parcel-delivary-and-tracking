@@ -52,7 +52,7 @@ if (isset($_POST['signup'])) {
 
         if ($data_check) {
             $subject = "Email Verification Code";
-            $message = "Your verification code for Parcel Delivery and Tracking Management System is $code. 
+            $message = "Dear $firstname, Your verification code for Parcel Delivery and Tracking Management System is $code. 
             Please enter this code for verify your email address. Thanks for choosing us. ";
             $sender = "From: PDT482@gmail.com";
             if (mail($email, $subject, $message, $sender)) {
@@ -144,7 +144,7 @@ if (isset($_POST['check-email'])) {
         $run_query =  mysqli_query($conn, $insert_code);
         if ($run_query) {
             $subject = "Password Reset Code";
-            $message = "Your password reset code is $code.Please enter with this code for reset your password.";
+            $message = "Dear $firstname, Your password reset code is $code.Please enter with this code for reset your password.";
             $sender = "From: PDT482@gmail.com";
             if (mail($email, $subject, $message, $sender)) {
                 $info = "We've sent a passwrod reset otp to your email - $email. Please check your email.";
